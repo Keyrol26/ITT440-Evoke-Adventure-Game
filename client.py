@@ -32,6 +32,12 @@ def receive_messages():
             print(f"Connection lost. Error: {e}")
             client.close()
             break
+			
+def show_number_buttons():
+    number_frame.pack()
+
+def hide_number_buttons():
+    number_frame.pack_forget()
 
 
 if __name__ == "__main__":
