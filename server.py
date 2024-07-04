@@ -24,6 +24,22 @@ rooms = {
     "kitchen": {
         "description": "You are in a kitchen. There is a door to the west.",
         "west": "hall"
+    },
+    "library": {
+        "description": "You are in a library. There are doors to the north, east, and the treasure room to the west.",
+        "north": "garden",
+        "east": "hall",
+        "west": "treasure_room"
+    },
+    "garden": {
+        "description": "You are in a beautiful garden. There is a door to the south.",
+        "south": "library"
+    },
+    "treasure_room": {
+        "description": "You are in a room filled with treasure! There is a question to answer.",
+        "question": "How many genders are there in this world? Enter a number.",
+        "answer": "2",
+        "diamond_collected": "not yet"
     }
 }
 
@@ -36,6 +52,25 @@ def place_gold_in_rooms(rooms):
 
 place_gold_in_rooms(rooms)
 
+def get_title(gold, diamond_collected):
+    if diamond_collected == "collected":
+        if gold >= 100:
+            return "Diamond Collector and Master Treasure Hunter"
+        elif gold >= 50:
+            return "Diamond Collector and Expert Adventurer"
+        elif gold >= 20:
+            return "Diamond Collector and Novice Explorer"
+        else:
+            return "Diamond Collector and Beginner"
+    else:
+        if gold >= 100:
+            return "Master Treasure Hunter"
+        elif gold >= 50:
+            return "Expert Adventurer"
+        elif gold >= 20:
+            return "Novice Explorer"
+        else:
+            return "Beginner"
 
 def handle_client(client):
     current_room = "start"

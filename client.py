@@ -39,6 +39,17 @@ def show_number_buttons():
 def hide_number_buttons():
     number_frame.pack_forget()
 
+def send_command(command):
+    client.send(command.encode("utf-8"))
+
+def send_name():
+    player_name = name_entry.get()
+    if player_name:
+        send_command(player_name)
+        name_entry.delete(0, tk.END)
+        name_frame.pack_forget()
+        game_frame.pack()
+
 def create_ui():
     global text_area, name_entry, name_frame, game_frame, number_frame, root
 
